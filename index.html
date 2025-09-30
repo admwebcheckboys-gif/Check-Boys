@@ -90,6 +90,16 @@
             pointer-events: none;
         }
 
+        /* Animação do carrossel de logos */
+        @keyframes infinite-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+
+        .animate-infinite-scroll {
+            animation: infinite-scroll 40s linear infinite;
+        }
+
         /* Ajustes Mobile */
         @media (max-width: 767px) {
             .aurora-inner {
@@ -188,7 +198,25 @@
                     <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">
                         Confiado por empresas de Juiz de Fora e região
                     </h3>
-                    <div class="mt-8 flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
+                    <!-- Carrossel para Mobile -->
+                    <div class="md:hidden w-full inline-flex flex-nowrap overflow-hidden mt-8 [mask-image:_linear-gradient(to_right,transparent_0,_black_20px,_black_calc(100%-20px),transparent_100%)]">
+                        <ul class="flex items-center justify-center animate-infinite-scroll">
+                            <li class="mx-4"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Empresa+A" alt="Logo Empresa A" class="h-8"></li>
+                            <li class="mx-4"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Empresa+B" alt="Logo Empresa B" class="h-8"></li>
+                            <li class="mx-4"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Empresa+C" alt="Logo Empresa C" class="h-8"></li>
+                            <li class="mx-4"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Empresa+D" alt="Logo Empresa D" class="h-8"></li>
+                            <li class="mx-4"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Empresa+E" alt="Logo Empresa E" class="h-8"></li>
+                        </ul>
+                        <ul class="flex items-center justify-center animate-infinite-scroll" aria-hidden="true">
+                            <li class="mx-4"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Empresa+A" alt="Logo Empresa A" class="h-8"></li>
+                            <li class="mx-4"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Empresa+B" alt="Logo Empresa B" class="h-8"></li>
+                            <li class="mx-4"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Empresa+C" alt="Logo Empresa C" class="h-8"></li>
+                            <li class="mx-4"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Empresa+D" alt="Logo Empresa D" class="h-8"></li>
+                            <li class="mx-4"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Empresa+E" alt="Logo Empresa E" class="h-8"></li>
+                        </ul>
+                    </div>
+                    <!-- Grid para Desktop -->
+                    <div class="hidden md:flex flex-wrap justify-center items-center gap-x-12 gap-y-6 mt-8">
                         <img src="https://placehold.co/140x40/cbd5e1/475569?text=Empresa+A" alt="Logo Empresa A"
                             class="h-8 transition-transform duration-300 hover:scale-110 opacity-70 hover:opacity-100">
                         <img src="https://placehold.co/140x40/cbd5e1/475569?text=Empresa+B" alt="Logo Empresa B"
@@ -455,8 +483,16 @@
                 <!-- Coluna 3: Contato -->
                 <div>
                     <h4 class="text-lg font-semibold uppercase">Contato</h4>
-                    <ul class="mt-4 space-y-2 text-gray-400">
+                    <ul class="mt-4 space-y-3 text-gray-400">
                         <li><strong>Whatsapp:</strong> (32) 99908-3228</li>
+                        <li>
+                            <a href="tel:+5532999083228" class="inline-flex items-center gap-2 hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                  </svg>
+                                <strong>Ligar Agora</strong>
+                            </a>
+                        </li>
                         <li><strong>Endereço:</strong> Juiz de Fora - MG</li>
                     </ul>
                 </div>
@@ -601,8 +637,4 @@
 </body>
 
 </html>
-
-
-
-
 
