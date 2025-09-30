@@ -77,6 +77,18 @@
             background-image: radial-gradient(ellipse, rgba(234, 88, 12, 0.25) 0%, rgba(234, 88, 12, 0) 70%);
             pointer-events: none;
         }
+
+        .aurora-inner-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            width: 200%;
+            max-width: 1200px;
+            padding-top: 100%;
+            background-image: radial-gradient(ellipse, rgba(234, 88, 12, 0.25) 0%, rgba(234, 88, 12, 0) 70%);
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -84,6 +96,7 @@
     <div class="relative">
         <div class="aurora-outer">
             <div class="aurora-inner"></div>
+            <div class="aurora-inner-bottom"></div>
         </div>
 
         <!-- Cabeçalho e Navegação -->
@@ -142,7 +155,7 @@
                                 Nossos Diferenciais
                             </a>
                             <a href="https://wa.me/5532999083228?text=Olá!%20Vim%20pela%20landing%20page%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20planos%20e%20serviços%20da%20Check%20Boys." target="_blank"
-                                class="bg-gray-800 text-gray-200 font-semibold px-8 py-4 rounded-lg hover:bg-gray-700 transition-all duration-300 text-lg transform hover:-translate-y-1">
+                                class="whatsapp-link bg-gray-900/50 backdrop-blur-sm border border-gray-800 text-gray-200 font-semibold px-8 py-4 rounded-lg hover:bg-gray-800 hover:border-gray-700 transition-all duration-300 text-lg transform hover:-translate-y-1">
                                 Solicitar Orçamento
                             </a>
                         </div>
@@ -190,9 +203,9 @@
                             Vamos além da entrega. Oferecemos eficiência, tecnologia e liberdade para sua loja vender mais.
                         </p>
                     </div>
-                    <div class="mt-16 grid md:grid-cols-3 gap-12 text-center">
-                        <!-- Passo 1 -->
-                        <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mt-16 grid md:grid-cols-3 gap-8">
+                        <!-- Diferencial 1 -->
+                        <div class="flex flex-col items-center text-center bg-gray-900/50 backdrop-blur-sm border border-gray-800 p-8 rounded-lg shadow-md hover:shadow-orange-600/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
                             <div
                                 class="bg-orange-100 text-orange-600 rounded-full p-4 mb-4 transition-transform duration-300 hover:scale-110">
                                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13V7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0l-6 3"></path></svg>
@@ -202,8 +215,8 @@
                                 Otimizamos suas rotas com até 10 entregas por percurso, garantindo o menor custo e o menor tempo.
                             </p>
                         </div>
-                        <!-- Passo 2 -->
-                        <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+                        <!-- Diferencial 2 -->
+                        <div class="flex flex-col items-center text-center bg-gray-900/50 backdrop-blur-sm border border-gray-800 p-8 rounded-lg shadow-md hover:shadow-orange-600/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
                             <div
                                 class="bg-orange-100 text-orange-600 rounded-full p-4 mb-4 transition-transform duration-300 hover:scale-110">
                                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
@@ -213,8 +226,8 @@
                                 Integre com seu sistema ou iFood e tenha relatórios para controlar tudo na palma da mão.
                             </p>
                         </div>
-                        <!-- Passo 3 -->
-                        <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
+                        <!-- Diferencial 3 -->
+                        <div class="flex flex-col items-center text-center bg-gray-900/50 backdrop-blur-sm border border-gray-800 p-8 rounded-lg shadow-md hover:shadow-orange-600/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
                             <div
                                 class="bg-orange-100 text-orange-600 rounded-full p-4 mb-4 transition-transform duration-300 hover:scale-110">
                                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -286,7 +299,7 @@
                     </div>
                     <div class="mt-16 grid lg:grid-cols-3 gap-8">
                         <!-- Depoimento 1 -->
-                        <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 p-8 rounded-lg transition-transform duration-300 hover:scale-105"
+                        <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 p-8 rounded-lg shadow-md hover:shadow-orange-600/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
                             data-aos="fade-up" data-aos-delay="100">
                             <p class="text-gray-400">"A parceria com a Check Boys foi um divisor de águas para nós. O
                                 profissionalismo e a agilidade da equipe superaram todas as expectativas."</p>
@@ -300,7 +313,7 @@
                             </div>
                         </div>
                         <!-- Depoimento 2 -->
-                        <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 p-8 rounded-lg transition-transform duration-300 hover:scale-105"
+                        <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 p-8 rounded-lg shadow-md hover:shadow-orange-600/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
                             data-aos="fade-up" data-aos-delay="200">
                             <p class="text-gray-400">"Resultados incríveis. A integração com o iFood reduziu nossos custos e o tempo de entrega. Nossos clientes estão mais satisfeitos."</p>
                             <div class="mt-6 flex items-center">
@@ -313,7 +326,7 @@
                             </div>
                         </div>
                         <!-- Depoimento 3 -->
-                        <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 p-8 rounded-lg transition-transform duration-300 hover:scale-105"
+                        <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 p-8 rounded-lg shadow-md hover:shadow-orange-600/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
                             data-aos="fade-up" data-aos-delay="300">
                             <p class="text-gray-400">"O suporte é fantástico e a plataforma é muito fácil de usar. Recomendo fortemente para quem busca logística de qualidade."</p>
                             <div class="mt-6 flex items-center">
@@ -340,7 +353,7 @@
                     </div>
                     <div class="mt-12 space-y-4" data-aos="fade-up" data-aos-delay="200">
                         <!-- FAQ Item 1 -->
-                        <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-lg">
+                        <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-lg shadow-md hover:shadow-orange-600/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                             <button class="faq-toggle w-full text-left p-6 flex justify-between items-center">
                                 <span class="text-lg font-semibold text-gray-100">Vocês cobram comissão por pedido?</span>
                                 <svg class="faq-icon w-6 h-6 text-gray-500 transition-transform transform" fill="none"
@@ -354,7 +367,7 @@
                             </div>
                         </div>
                         <!-- FAQ Item 2 -->
-                        <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-lg">
+                        <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-lg shadow-md hover:shadow-orange-600/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                             <button class="faq-toggle w-full text-left p-6 flex justify-between items-center">
                                 <span class="text-lg font-semibold text-gray-100">Como faço para solicitar uma entrega?</span>
                                 <svg class="faq-icon w-6 h-6 text-gray-500 transition-transform transform" fill="none"
@@ -368,7 +381,7 @@
                             </div>
                         </div>
                         <!-- FAQ Item 3 -->
-                        <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-lg">
+                        <div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-lg shadow-md hover:shadow-orange-600/20 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                             <button class="faq-toggle w-full text-left p-6 flex justify-between items-center">
                                 <span class="text-lg font-semibold text-gray-100">Qual o tempo médio para a coleta?</span>
                                 <svg class="faq-icon w-6 h-6 text-gray-500 transition-transform transform" fill="none"
@@ -397,7 +410,7 @@
                 Fale conosco e descubra o plano ideal para a sua empresa. Venda mais, gaste menos.
             </p>
             <a href="https://wa.me/5532999083228?text=Olá!%20Vim%20pela%20landing%20page%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20planos%20e%20serviços%20da%20Check%20Boys." target="_blank"
-                class="mt-8 inline-block bg-white text-orange-700 font-bold px-10 py-4 rounded-lg hover:bg-orange-50 transition-all duration-300 text-lg transform hover:scale-105">
+                class="whatsapp-link mt-8 inline-block bg-white text-orange-700 font-bold px-10 py-4 rounded-lg hover:bg-orange-50 transition-all duration-300 text-lg transform hover:scale-105">
                 Falar pelo WhatsApp
             </a>
         </div>
@@ -547,6 +560,30 @@
                 carouselImages[currentImageIndex].classList.add('opacity-100');
             }, 4000); // Muda a cada 4 segundos
         }
+
+        // Lógica para links do WhatsApp compatível com iOS
+        const whatsappLinks = document.querySelectorAll('.whatsapp-link');
+        whatsappLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const phone = '5532999083228';
+                const message = encodeURIComponent('Olá! Vim pela landing page e gostaria de saber mais sobre os planos e serviços da Check Boys.');
+                
+                const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+                
+                let url;
+                if (isIOS) {
+                    // Para iOS, o link direto para o app é mais estável
+                    url = `whatsapp://send?phone=${phone}&text=${message}`;
+                } else {
+                    // Para outros sistemas, o link da API é o padrão
+                    url = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
+                }
+                
+                // Abre o link em uma nova aba. O .focus() ajuda em alguns navegadores.
+                window.open(url, '_blank').focus();
+            });
+        });
 
     </script>
 </body>
