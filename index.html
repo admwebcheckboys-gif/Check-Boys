@@ -89,6 +89,18 @@
             background-image: radial-gradient(ellipse, rgba(234, 88, 12, 0.25) 0%, rgba(234, 88, 12, 0) 70%);
             pointer-events: none;
         }
+
+        /* Ajustes Mobile */
+        @media (max-width: 767px) {
+            .aurora-inner {
+                width: 300%;
+                background-image: radial-gradient(ellipse, rgba(234, 88, 12, 0.35) 0%, rgba(234, 88, 12, 0) 60%);
+            }
+            .aurora-inner-bottom {
+                width: 300%;
+                background-image: radial-gradient(ellipse, rgba(234, 88, 12, 0.35) 0%, rgba(234, 88, 12, 0) 60%);
+            }
+        }
     </style>
 </head>
 
@@ -114,7 +126,7 @@
                 <a href="https://check-boys.entregasexpressas.com.br/" target="_blank"
                     class="hidden lg:inline-block bg-orange-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-orange-700 transition duration-300 btn-glow"
                     data-aos="fade-down" data-aos-delay="200">
-                    Acessar Site
+                    Acessar Plataforma
                 </a>
                 <button id="mobile-menu-button" class="lg:hidden text-gray-300 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -131,7 +143,7 @@
                 <a href="#faq" class="block text-gray-300 hover:text-orange-500">Dúvidas</a>
                 <a href="#contato" class="block text-gray-300 hover:text-orange-500">Contato</a>
                 <a href="https://check-boys.entregasexpressas.com.br/" target="_blank"
-                    class="block mt-4 bg-orange-600 text-white text-center font-semibold px-5 py-2 rounded-lg hover:bg-orange-700">Acessar Site</a>
+                    class="block mt-4 bg-orange-600 text-white text-center font-semibold px-5 py-2 rounded-lg hover:bg-orange-700">Acessar Plataforma</a>
             </div>
         </header>
 
@@ -140,7 +152,7 @@
             <section class="overflow-hidden">
                 <div class="container mx-auto px-6 py-20 lg:py-32 grid lg:grid-cols-2 gap-12 items-center">
                     <div class="text-center lg:text-left">
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-50 leading-tight"
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-50 leading-tight"
                             data-aos="fade-right" data-aos-duration="800">
                             Agilidade e economia para as entregas do seu negócio.
                         </h1>
@@ -154,7 +166,7 @@
                                 class="bg-orange-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-orange-700 transition-all duration-300 text-lg btn-glow transform hover:-translate-y-1">
                                 Nossos Diferenciais
                             </a>
-                            <a href="https://wa.me/5532999083228?text=Olá!%20Vim%20pela%20Pagina%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20planos%20e%20serviços%20da%20Check%20Boys." target="_blank"
+                            <a href="https://wa.me/5532999083228?text=Olá!%20Vim%20pela%20landing%20page%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20planos%20e%20serviços%20da%20Check%20Boys." target="_blank"
                                 class="whatsapp-link bg-gray-900/50 backdrop-blur-sm border border-gray-800 text-gray-200 font-semibold px-8 py-4 rounded-lg hover:bg-gray-800 hover:border-gray-700 transition-all duration-300 text-lg transform hover:-translate-y-1">
                                 Solicitar Orçamento
                             </a>
@@ -409,7 +421,7 @@
             <p class="mt-4 text-lg text-orange-200 max-w-2xl mx-auto">
                 Fale conosco e descubra o plano ideal para a sua empresa. Venda mais, gaste menos.
             </p>
-            <a href="https://wa.me/5532999083228?text=Olá!%20Vim%20pela%20Pagina%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20planos%20e%20serviços%20da%20Check%20Boys." target="_blank"
+            <a href="https://wa.me/5532999083228?text=Olá!%20Vim%20pela%20landing%20page%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20planos%20e%20serviços%20da%20Check%20Boys." target="_blank"
                 class="whatsapp-link mt-8 inline-block bg-white text-orange-700 font-bold px-10 py-4 rounded-lg hover:bg-orange-50 transition-all duration-300 text-lg transform hover:scale-105">
                 Falar pelo WhatsApp
             </a>
@@ -567,7 +579,7 @@
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const phone = '5532999083228';
-                const message = encodeURIComponent('Olá! Vim pela Pagina e gostaria de saber mais sobre os planos e serviços da Check Boys.');
+                const message = encodeURIComponent('Olá! Vim pela landing page e gostaria de saber mais sobre os planos e serviços da Check Boys.');
                 
                 const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
                 
@@ -589,6 +601,4 @@
 </body>
 
 </html>
-
-
 
