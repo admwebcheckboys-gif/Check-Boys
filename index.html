@@ -146,9 +146,11 @@
                             </a>
                         </div>
                     </div>
-                    <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
-                        <img src="https://placehold.co/600x400/EA580C/FFFFFF?text=Check+Boys+Delivery"
-                            alt="Entregador da Check Boys em alta velocidade" class="rounded-lg shadow-2xl w-full">
+                    <div id="hero-carousel" class="relative w-full min-h-[250px] md:min-h-[400px] rounded-lg shadow-2xl overflow-hidden" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
+                        <img src="https://iili.io/KG0HOla.png" alt="Entregador da Check Boys com mochila de delivery" class="carousel-image absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-100">
+                        <img src="https://iili.io/KG0HEHx.png" alt="Motoboy da Check Boys em uma moto moderna" class="carousel-image absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-0">
+                        <img src="https://iili.io/KG0HXoP.png" alt="Detalhe de um motoboy segurando capacete" class="carousel-image absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-0">
+                        <img src="https://iili.io/KG0HYPe.png" alt="Visão traseira de um motoboy da Check Boys" class="carousel-image absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-0">
                     </div>
                 </div>
             </section>
@@ -525,6 +527,24 @@
                 behavior: 'smooth'
             });
         });
+
+        // Lógica para o carrossel da Hero Section
+        const carouselImages = document.querySelectorAll('#hero-carousel .carousel-image');
+        let currentImageIndex = 0;
+        if (carouselImages.length > 0) {
+            setInterval(() => {
+                // Esconde a imagem atual
+                carouselImages[currentImageIndex].classList.remove('opacity-100');
+                carouselImages[currentImageIndex].classList.add('opacity-0');
+
+                // Calcula o próximo índice
+                currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
+
+                // Mostra a próxima imagem
+                carouselImages[currentImageIndex].classList.remove('opacity-0');
+                carouselImages[currentImageIndex].classList.add('opacity-100');
+            }, 4000); // Muda a cada 4 segundos
+        }
 
     </script>
 </body>
