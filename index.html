@@ -132,7 +132,7 @@
 
         @keyframes infinite-scroll {
             from { transform: translateX(0); }
-            to { transform: translateX(-100%); }
+            to { transform: translateX(-50%); }
         }
 
         .animate-infinite-scroll {
@@ -226,20 +226,18 @@
                 </h3>
                 <div class="mt-8 max-w-4xl mx-auto">
                     <div class="w-full flex flex-nowrap overflow-hidden [mask-image:_linear_gradient(to_right,transparent_0,_black_70px,_black_calc(100%-70px),transparent_100%)]">
-                        <div class="flex items-center animate-infinite-scroll">
-                            <ul class="flex items-center">
-                                <li class="mx-20 shrink-0"><img src="https://iili.io/KV23d1j.png" alt="Logo da Drogaria Olegário Maciel" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
-                                <li class="mx-20 shrink-0"><img src="https://iili.io/KV0zJcb.png" alt="Logo da MDN Tabacaria" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
-                                <li class="mx-20 shrink-0"><img src="https://iili.io/KVaQwRS.png" alt="Logo da LEVE PIZZA" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
-                                <li class="mx-20 shrink-0"><img src="https://iili.io/KVaQjJ2.png" alt="Logo do CAPITANO" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
-                            </ul>
-                            <ul class="flex items-center" aria-hidden="true">
-                                <li class="mx-20 shrink-0"><img src="https://iili.io/KV23d1j.png" alt="Logo da Drogaria Olegário Maciel" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
-                                <li class="mx-20 shrink-0"><img src="https://iili.io/KV0zJcb.png" alt="Logo da MDN Tabacaria" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
-                                <li class="mx-20 shrink-0"><img src="https://iili.io/KVaQwRS.png" alt="Logo da LEVE PIZZA" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
-                                <li class="mx-20 shrink-0"><img src="https://iili.io/KVaQjJ2.png" alt="Logo do CAPITANO" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
-                            </ul>
-                        </div>
+                        <ul class="flex items-center animate-infinite-scroll">
+                            <!-- Original Logos -->
+                            <li class="mx-20 shrink-0"><img src="https://iili.io/KV23d1j.png" alt="Logo da Drogaria Olegário Maciel" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
+                            <li class="mx-20 shrink-0"><img src="https://iili.io/KV0zJcb.png" alt="Logo da MDN Tabacaria" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
+                            <li class="mx-20 shrink-0"><img src="https://iili.io/KVaQwRS.png" alt="Logo da LEVE PIZZA" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
+                            <li class="mx-20 shrink-0"><img src="https://iili.io/KVaQjJ2.png" alt="Logo do CAPITANO" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
+                            <!-- Duplicated Logos for seamless loop -->
+                            <li class="mx-20 shrink-0"><img src="https://iili.io/KV23d1j.png" alt="Logo da Drogaria Olegário Maciel" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
+                            <li class="mx-20 shrink-0"><img src="https://iili.io/KV0zJcb.png" alt="Logo da MDN Tabacaria" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
+                            <li class="mx-20 shrink-0"><img src="https://iili.io/KVaQwRS.png" alt="Logo da LEVE PIZZA" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
+                            <li class="mx-20 shrink-0"><img src="https://iili.io/KVaQjJ2.png" alt="Logo do CAPITANO" class="h-14 md:h-16 w-auto transition-transform duration-300 hover:scale-110 opacity-80 hover:opacity-100" loading="lazy"></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -519,6 +517,7 @@
     </script>
 </body>
 </html>
+
 
 
 
