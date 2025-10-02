@@ -61,14 +61,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
     <style>
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            /* Added scroll-behavior here for fallback */
-            scroll-behavior: smooth;
         }
 
         .faq-content {
@@ -103,6 +99,37 @@
             transform: translateY(0);
         }
         
+        @keyframes pulse-aurora {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+        }
+
+        .aurora-outer {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .aurora-inner {
+            position: absolute;
+            top: 0; left: 50%;
+            width: 200%; max-width: 1200px;
+            padding-top: 100%;
+            background-image: radial-gradient(ellipse, rgba(255, 67, 0, 0.25) 0%, rgba(255, 67, 0, 0) 70%);
+            animation: pulse-aurora 12s ease-in-out infinite;
+        }
+
+        .aurora-inner-bottom {
+            position: absolute;
+            bottom: 0; left: 50%;
+            transform: translate(-50%, 50%);
+            width: 200%; max-width: 1200px;
+            padding-top: 100%;
+            background-image: radial-gradient(ellipse, rgba(255, 67, 0, 0.25) 0%, rgba(255, 67, 0, 0) 70%);
+        }
+
         @keyframes infinite-scroll {
             from { transform: translateX(0); }
             to { transform: translateX(-100%); }
@@ -112,86 +139,11 @@
             animation: infinite-scroll 40s linear infinite;
         }
 
-        /* Swiper Carousel Styles */
-        .swiper-container {
-            width: 100%;
-            padding-top: 10px;
-            padding-bottom: 40px;
-        }
-
-        .swiper-slide {
-            background-position: center;
-            background-size: cover;
-            height: 250px;
-            width: 250px;
-            border-radius: 0.75rem;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .swiper-slide img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: #ff4300 !important;
-            transform: scale(0.8);
-        }
-
-        .swiper-pagination-bullet-active {
-            background-color: #ff4300 !important;
-        }
-
-        /* Lightbox Styles */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            padding: 2rem;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        .lightbox.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 0.5rem;
-            transform: scale(0.8);
-            transition: transform 0.3s ease;
-        }
-        .lightbox.show img {
-            transform: scale(1);
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            color: white;
-            font-size: 3rem;
-            cursor: pointer;
-            line-height: 1;
-        }
-
         @media (max-width: 767px) {
-           .swiper-slide {
-                height: 220px;
-                width: 220px;
-           }
+            .aurora-inner, .aurora-inner-bottom {
+                width: 300%;
+                background-image: radial-gradient(ellipse, rgba(255, 67, 0, 0.35) 0%, rgba(255, 67, 0, 0) 60%);
+            }
         }
     </style>
 </head>
@@ -252,27 +204,16 @@
                         </a>
                     </div>
                 </div>
-                <!-- Swiper Carousel -->
-                <div class="swiper-container my-swiper" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="https://iili.io/KGP8b6b.jpg" alt="Entregador da Check Boys uniformizado com mochila de delivery vermelha em uma moto" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://iili.io/KGP8DMu.jpg" alt="Close-up de um entregador da Check Boys ajustando sua mochila de delivery" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://iili.io/KGP8Qt9.jpg" alt="Entregador sorridente da Check Boys pronto para o trabalho" />
-                        </div>
-                        <div class="swiper-slide">
-                             <img src="https://iili.io/KGP8suS.jpg" alt="Foto de costas de um entregador da Check Boys com a mochila da marca" />
-                        </div>
-                        <div class="swiper-slide">
-                             <img src="https://iili.io/KGP8tne.jpg" alt="Entregador da Check Boys em uma moto vermelha" />
-                        </div>
-                    </div>
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
+                <div id="hero-carousel" class="relative w-full min-h-[300px] md:min-h-[450px] rounded-lg shadow-2xl overflow-hidden" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
+                    <picture class="carousel-image absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out opacity-100">
+                        <img src="https://iili.io/KGP8b6b.jpg" alt="Entregador da Check Boys uniformizado com mochila de delivery vermelha em uma moto" class="w-full h-full object-cover" width="1200" height="800">
+                    </picture>
+                    <picture class="carousel-image absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out opacity-0">
+                        <img src="https://iili.io/KGP8DMu.jpg" alt="Close-up de um entregador da Check Boys ajustando sua mochila de delivery" class="w-full h-full object-cover" loading="lazy" width="1200" height="800">
+                    </picture>
+                    <picture class="carousel-image absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out opacity-0">
+                        <img src="https://iili.io/KGP8Qt9.jpg" alt="Entregador sorridente da Check Boys pronto para o trabalho" class="w-full h-full object-cover" loading="lazy" width="1200" height="800">
+                    </picture>
                 </div>
             </div>
         </section>
@@ -285,20 +226,20 @@
                 </h3>
                 <div class="w-full inline-flex flex-nowrap overflow-hidden mt-8 [mask-image:_linear-gradient(to_right,transparent_0,_black_20px,_black_calc(100%-20px),transparent_100%)]">
                     <ul class="flex items-center justify-center animate-infinite-scroll">
-                        <li class="mx-8" title="Logo Cliente 1"><svg class="h-10 text-gray-500 transition-colors duration-300 hover:text-gray-300" role="img" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg></li>
-                        <li class="mx-8" title="Logo Cliente 2"><svg class="h-10 text-gray-500 transition-colors duration-300 hover:text-gray-300" role="img" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12l-4-4v3H3v2h15v3l4-4z"/></svg></li>
-                        <li class="mx-8" title="Logo Cliente 3"><svg class="h-10 text-gray-500 transition-colors duration-300 hover:text-gray-300" role="img" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 11.5L4.5 10.25 12 7l7.5 3.25L12 13.5zM2 17l10 5 10-5-10-5-10 5z"/></svg></li>
-                        <li class="mx-8" title="Logo Cliente 4"><svg class="h-10 text-gray-500 transition-colors duration-300 hover:text-gray-300" role="img" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3C6.5 3 2 7.5 2 13s4.5 10 10 10 10-4.5 10-10S17.5 3 12 3zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/><path d="M12.5 12.5H16v-2h-5V7h2v3.5z"/></svg></li>
-                        <li class="mx-8" title="Logo Cliente 5"><svg class="h-10 text-gray-500 transition-colors duration-300 hover:text-gray-300" role="img" fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 5.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/></svg></li>
-                        <li class="mx-8" title="Logo Cliente 6"><svg class="h-10 text-gray-500 transition-colors duration-300 hover:text-gray-300" role="img" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z m-1 14H9v-2h2v2zm0-4H9V7h2v5zm4 4h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg></li>
+                        <li class="mx-6"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Cliente+1" alt="Logo do Cliente 1" class="h-8 transition-transform duration-300 hover:scale-110 opacity-70 hover:opacity-100" loading="lazy"></li>
+                        <li class="mx-6"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Cliente+2" alt="Logo do Cliente 2" class="h-8 transition-transform duration-300 hover:scale-110 opacity-70 hover:opacity-100" loading="lazy"></li>
+                        <li class="mx-6"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Cliente+3" alt="Logo do Cliente 3" class="h-8 transition-transform duration-300 hover:scale-110 opacity-70 hover:opacity-100" loading="lazy"></li>
+                        <li class="mx-6"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Cliente+4" alt="Logo do Cliente 4" class="h-8 transition-transform duration-300 hover:scale-110 opacity-70 hover:opacity-100" loading="lazy"></li>
+                        <li class="mx-6"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Cliente+5" alt="Logo do Cliente 5" class="h-8 transition-transform duration-300 hover:scale-110 opacity-70 hover:opacity-100" loading="lazy"></li>
+                        <li class="mx-6"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Cliente+6" alt="Logo do Cliente 6" class="h-8 transition-transform duration-300 hover:scale-110 opacity-70 hover:opacity-100" loading="lazy"></li>
                     </ul>
                     <ul class="flex items-center justify-center animate-infinite-scroll" aria-hidden="true">
-                         <li class="mx-8" title="Logo Cliente 1"><svg class="h-10 text-gray-500 transition-colors duration-300 hover:text-gray-300" role="img" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg></li>
-                        <li class="mx-8" title="Logo Cliente 2"><svg class="h-10 text-gray-500 transition-colors duration-300 hover:text-gray-300" role="img" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12l-4-4v3H3v2h15v3l4-4z"/></svg></li>
-                        <li class="mx-8" title="Logo Cliente 3"><svg class="h-10 text-gray-500 transition-colors duration-300 hover:text-gray-300" role="img" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 11.5L4.5 10.25 12 7l7.5 3.25L12 13.5zM2 17l10 5 10-5-10-5-10 5z"/></svg></li>
-                        <li class="mx-8" title="Logo Cliente 4"><svg class="h-10 text-gray-500 transition-colors duration-300 hover:text-gray-300" role="img" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3C6.5 3 2 7.5 2 13s4.5 10 10 10 10-4.5 10-10S17.5 3 12 3zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/><path d="M12.5 12.5H16v-2h-5V7h2v3.5z"/></svg></li>
-                        <li class="mx-8" title="Logo Cliente 5"><svg class="h-10 text-gray-500 transition-colors duration-300 hover:text-gray-300" role="img" fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 5.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/></svg></li>
-                        <li class="mx-8" title="Logo Cliente 6"><svg class="h-10 text-gray-500 transition-colors duration-300 hover:text-gray-300" role="img" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z m-1 14H9v-2h2v2zm0-4H9V7h2v5zm4 4h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg></li>
+                        <li class="mx-6"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Cliente+1" alt="Logo do Cliente 1" class="h-8 transition-transform duration-300 hover:scale-110 opacity-70 hover:opacity-100" loading="lazy"></li>
+                        <li class="mx-6"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Cliente+2" alt="Logo do Cliente 2" class="h-8 transition-transform duration-300 hover:scale-110 opacity-70 hover:opacity-100" loading="lazy"></li>
+                        <li class="mx-6"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Cliente+3" alt="Logo do Cliente 3" class="h-8 transition-transform duration-300 hover:scale-110 opacity-70 hover:opacity-100" loading="lazy"></li>
+                        <li class="mx-6"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Cliente+4" alt="Logo do Cliente 4" class="h-8 transition-transform duration-300 hover:scale-110 opacity-70 hover:opacity-100" loading="lazy"></li>
+                        <li class="mx-6"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Cliente+5" alt="Logo do Cliente 5" class="h-8 transition-transform duration-300 hover:scale-110 opacity-70 hover:opacity-100" loading="lazy"></li>
+                        <li class="mx-6"><img src="https://placehold.co/140x40/cbd5e1/475569?text=Cliente+6" alt="Logo do Cliente 6" class="h-8 transition-transform duration-300 hover:scale-110 opacity-70 hover:opacity-100" loading="lazy"></li>
                     </ul>
                 </div>
             </div>
@@ -457,22 +398,22 @@
                 </div>
                 <div class="flex items-center gap-8 mt-6 md:mt-0">
                       <div class="hidden md:block text-center md:text-right">
-                          <ul class="space-y-2 text-gray-400">
-                              <li><strong>Whatsapp:</strong> <a href="https://wa.me/5532999083228" target="_blank" class="hover:text-white transition-colors">(32) 99908-3228</a></li>
-                              <li><strong>Endereço:</strong> Juiz de Fora - MG</li>
-                          </ul>
-                      </div>
-                      <div class="relative">
-                          <button id="footer-menu-button" class="text-gray-400 hover:text-white" aria-label="Abrir menu do rodapé">
-                              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                          </button>
-                          <div id="footer-menu" class="hidden absolute bottom-full right-0 mb-2 w-48 bg-gray-800 rounded-lg shadow-lg py-2 z-10">
-                               <a href="#diferenciais" class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white">Diferenciais</a>
-                               <a href="#servicos" class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white">Soluções</a>
-                               <a href="#faq" class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white">Dúvidas</a>
-                               <a href="https://check-boys.entregasexpressas.com.br/" target="_blank" class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white">Área do Cliente</a>
-                          </div>
-                      </div>
+                        <ul class="space-y-2 text-gray-400">
+                            <li><strong>Whatsapp:</strong> <a href="https://wa.me/5532999083228" target="_blank" class="hover:text-white transition-colors">(32) 99908-3228</a></li>
+                            <li><strong>Endereço:</strong> Juiz de Fora - MG</li>
+                        </ul>
+                    </div>
+                    <div class="relative">
+                        <button id="footer-menu-button" class="text-gray-400 hover:text-white" aria-label="Abrir menu do rodapé">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                        </button>
+                        <div id="footer-menu" class="hidden absolute bottom-full right-0 mb-2 w-48 bg-gray-800 rounded-lg shadow-lg py-2 z-10">
+                             <a href="#diferenciais" class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white">Diferenciais</a>
+                             <a href="#servicos" class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white">Soluções</a>
+                             <a href="#faq" class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white">Dúvidas</a>
+                             <a href="https://check-boys.entregasexpressas.com.br/" target="_blank" class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white">Área do Cliente</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="mt-8 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
@@ -485,81 +426,14 @@
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
     </a>
 
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-        <span id="lightbox-close" class="lightbox-close">&times;</span>
-        <img id="lightbox-image" src="" alt="Imagem ampliada do carrossel">
-    </div>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             AOS.init({ duration: 700, once: true, offset: 50 });
 
-            // Swiper Carousel Initialization
-            var swiper = new Swiper('.my-swiper', {
-                grabCursor: true,
-                loop: true,
-                slidesPerView: 1.5,
-                spaceBetween: 15,
-                centeredSlides: true,
-                autoplay: {
-                    delay: 3500,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                breakpoints: {
-                    768: {
-                      slidesPerView: 2,
-                      spaceBetween: 20,
-                      centeredSlides: false,
-                    },
-                    1024: {
-                      slidesPerView: 3,
-                      spaceBetween: 20,
-                      centeredSlides: false,
-                    }
-                }
-            });
+            const phoneNumber = '5532999083228';
+            const whatsappMessage = encodeURIComponent('Olá! Vim pela landing page e gostaria de saber mais sobre os planos e serviços da Check Boys.');
 
-            // Lightbox Logic
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImage = document.getElementById('lightbox-image');
-            const lightboxClose = document.getElementById('lightbox-close');
-            const carouselImages = document.querySelectorAll('.my-swiper .swiper-slide img');
-
-            carouselImages.forEach(image => {
-                image.addEventListener('click', (e) => {
-                    e.stopPropagation(); 
-                    lightboxImage.src = image.src;
-                    lightbox.classList.add('show');
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-
-            function closeLightbox() {
-                lightbox.classList.remove('show');
-                document.body.style.overflow = '';
-            }
-
-            lightboxClose.addEventListener('click', closeLightbox);
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) {
-                    closeLightbox();
-                }
-            });
-            // New: Close lightbox with Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && lightbox.classList.contains('show')) {
-                    closeLightbox();
-                }
-            });
-
-            // Mobile Menu
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => {
@@ -567,7 +441,6 @@
                 mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
             });
 
-            // Footer Menu
             const footerMenuButton = document.getElementById('footer-menu-button');
             const footerMenu = document.getElementById('footer-menu');
             if (footerMenuButton && footerMenu) {
@@ -582,7 +455,6 @@
                 });
             }
 
-            // FAQ Accordion
             const faqToggles = document.querySelectorAll('.faq-toggle');
             faqToggles.forEach(toggle => {
                 toggle.addEventListener('click', () => {
@@ -603,53 +475,43 @@
                 });
             });
 
-            // Smooth Scroll for all anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        // Special handling for mobile menu links to close the menu
-                        if (mobileMenu.contains(this)) {
-                            mobileMenu.classList.add('hidden');
-                            mobileMenuButton.setAttribute('aria-expanded', 'false');
-                        }
-                        
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
+            document.querySelectorAll('#mobile-menu a[href^="#"]').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
                 });
             });
 
-
-            // Header & Back-to-Top Button Visibility
             const header = document.getElementById('header');
             const backToTopButton = document.getElementById('back-to-top');
             window.onscroll = function () {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-                
-                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                    backToTopButton.classList.add('show');
-                } else {
-                    backToTopButton.classList.remove('show');
-                }
+                if (window.scrollY > 50) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) backToTopButton.classList.add('show');
+                else backToTopButton.classList.remove('show');
             };
             
-            // WhatsApp Link Logic
-            const phoneNumber = '5532999083228';
-            const whatsappMessage = encodeURIComponent('Olá! Vim pela landing page e gostaria de saber mais sobre os planos e serviços da Check Boys.');
+            document.querySelector('#back-to-top').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+
+            const carouselImages = document.querySelectorAll('#hero-carousel .carousel-image');
+            let currentImageIndex = 0;
+            if (carouselImages.length > 0) {
+                setInterval(() => {
+                    carouselImages[currentImageIndex].classList.remove('opacity-100');
+                    carouselImages[currentImageIndex].classList.add('opacity-0');
+                    currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
+                    carouselImages[currentImageIndex].classList.remove('opacity-0');
+                    carouselImages[currentImageIndex].classList.add('opacity-100');
+                }, 4000);
+            }
+
             const whatsappLinks = document.querySelectorAll('.whatsapp-link');
             whatsappLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    // Robust check for iOS/iPadOS devices
                     const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.userAgent.includes("Mac") && "ontouchend" in document);
                     let url = isIOS ? `https://wa.me/${phoneNumber}?text=${whatsappMessage}` : `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${whatsappMessage}`;
                     window.open(url, '_blank').focus();
@@ -659,3 +521,5 @@
     </script>
 </body>
 </html>
+
+
