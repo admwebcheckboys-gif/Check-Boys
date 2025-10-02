@@ -120,9 +120,11 @@
         .swiper-slide {
             background-position: center;
             background-size: cover;
-            height: 300px;
+            height: 250px;
+            width: 250px;
             border-radius: 0.75rem;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .swiper-slide img {
@@ -142,9 +144,51 @@
             background-color: #ff4300 !important;
         }
 
+        /* Lightbox Styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .lightbox.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 0.5rem;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        .lightbox.show img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+
         @media (max-width: 767px) {
            .swiper-slide {
-                height: 280px;
+                height: 220px;
+                width: 220px;
            }
         }
     </style>
@@ -189,8 +233,8 @@
                 <img src="https://iili.io/KVd42uS.png" alt="Entregador de moto em uma cidade à noite, representando a agilidade da Check Boys" class="w-full h-full object-cover opacity-30">
                 <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
             </div>
-            <div class="relative z-10 container mx-auto px-6 py-16 md:py-20 lg:py-32 grid lg:grid-cols-5 gap-12 items-center">
-                <div class="lg:col-span-2 text-center lg:text-left">
+            <div class="relative z-10 container mx-auto px-6 py-16 md:py-20 lg:py-32 grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
                     <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-gray-50 leading-tight" data-aos="fade-right" data-aos-duration="800">
                         Agilidade e economia para as entregas do seu negócio.
                     </h1>
@@ -206,8 +250,8 @@
                         </a>
                     </div>
                 </div>
-                <!-- Swiper 3D Coverflow Carousel -->
-                <div class="lg:col-span-3 swiper-container my-swiper" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
+                <!-- Swiper Carousel -->
+                <div class="swiper-container my-swiper" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <img src="https://iili.io/KGP8b6b.jpg" alt="Entregador da Check Boys uniformizado com mochila de delivery vermelha em uma moto" />
@@ -227,9 +271,6 @@
                     </div>
                     <!-- Add Pagination -->
                     <div class="swiper-pagination"></div>
-                    <!-- Add Navigation -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </section>
@@ -442,6 +483,12 @@
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
     </a>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" src="" alt="Imagem ampliada do carrossel">
+    </div>
+
     <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
@@ -452,7 +499,7 @@
             var swiper = new Swiper('.my-swiper', {
                 grabCursor: true,
                 loop: true,
-                slidesPerView: 1.2,
+                slidesPerView: 1.5,
                 spaceBetween: 15,
                 centeredSlides: true,
                 autoplay: {
@@ -462,10 +509,6 @@
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
                 },
                 breakpoints: {
                     768: {
@@ -480,6 +523,34 @@
                     }
                 }
             });
+
+            // Lightbox Logic
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            const carouselImages = document.querySelectorAll('.my-swiper .swiper-slide img');
+
+            carouselImages.forEach(image => {
+                image.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Evita que o clique se propague para outros elementos
+                    lightboxImage.src = image.src;
+                    lightbox.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            function closeLightbox() {
+                lightbox.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
 
             const phoneNumber = '5532999083228';
             const whatsappMessage = encodeURIComponent('Olá! Vim pela landing page e gostaria de saber mais sobre os planos e serviços da Check Boys.');
