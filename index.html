@@ -110,21 +110,19 @@
             animation: infinite-scroll 40s linear infinite;
         }
 
-        /* Swiper Coverflow Carousel Styles */
+        /* Swiper Carousel Styles */
         .swiper-container {
             width: 100%;
-            padding-top: 50px;
-            padding-bottom: 50px;
+            padding-top: 10px;
+            padding-bottom: 40px;
         }
 
         .swiper-slide {
             background-position: center;
             background-size: cover;
-            width: 300px;
             height: 300px;
             border-radius: 0.75rem;
             overflow: hidden;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
         }
 
         .swiper-slide img {
@@ -146,8 +144,7 @@
 
         @media (max-width: 767px) {
            .swiper-slide {
-                width: 240px;
-                height: 240px;
+                height: 280px;
            }
         }
     </style>
@@ -192,8 +189,8 @@
                 <img src="https://iili.io/KVd42uS.png" alt="Entregador de moto em uma cidade à noite, representando a agilidade da Check Boys" class="w-full h-full object-cover opacity-30">
                 <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
             </div>
-            <div class="relative z-10 container mx-auto px-6 py-16 md:py-20 lg:py-32 grid lg:grid-cols-2 gap-12 items-center">
-                <div class="text-center lg:text-left">
+            <div class="relative z-10 container mx-auto px-6 py-16 md:py-20 lg:py-32 grid lg:grid-cols-5 gap-12 items-center">
+                <div class="lg:col-span-2 text-center lg:text-left">
                     <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-gray-50 leading-tight" data-aos="fade-right" data-aos-duration="800">
                         Agilidade e economia para as entregas do seu negócio.
                     </h1>
@@ -210,7 +207,7 @@
                     </div>
                 </div>
                 <!-- Swiper 3D Coverflow Carousel -->
-                <div class="swiper-container my-swiper" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
+                <div class="lg:col-span-3 swiper-container my-swiper" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <img src="https://iili.io/KGP8b6b.jpg" alt="Entregador da Check Boys uniformizado com mochila de delivery vermelha em uma moto" />
@@ -453,29 +450,35 @@
 
             // Swiper Carousel Initialization
             var swiper = new Swiper('.my-swiper', {
-                effect: 'coverflow',
                 grabCursor: true,
-                centeredSlides: true,
-                slidesPerView: 2,
-                coverflowEffect: {
-                    rotate: 30,
-                    stretch: -30,
-                    depth: 100,
-                    modifier: 1.5,
-                    slideShadows: false,
-                },
                 loop: true,
+                slidesPerView: 1.2,
+                spaceBetween: 15,
+                centeredSlides: true,
                 autoplay: {
-                    delay: 3000,
+                    delay: 3500,
                     disableOnInteraction: false,
                 },
                 pagination: {
                     el: '.swiper-pagination',
+                    clickable: true,
                 },
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
+                breakpoints: {
+                    768: {
+                      slidesPerView: 2,
+                      spaceBetween: 20,
+                      centeredSlides: false,
+                    },
+                    1024: {
+                      slidesPerView: 3,
+                      spaceBetween: 20,
+                      centeredSlides: false,
+                    }
+                }
             });
 
             const phoneNumber = '5532999083228';
@@ -543,21 +546,6 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
 
-            // This is the old carousel logic, we can remove it or comment it out
-            /*
-            const carouselImages = document.querySelectorAll('#hero-carousel .carousel-image');
-            let currentImageIndex = 0;
-            if (carouselImages.length > 0) {
-                setInterval(() => {
-                    carouselImages[currentImageIndex].classList.remove('opacity-100');
-                    carouselImages[currentImageIndex].classList.add('opacity-0');
-                    currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
-                    carouselImages[currentImageIndex].classList.remove('opacity-0');
-                    carouselImages[currentImageIndex].classList.add('opacity-100');
-                }, 4000);
-            }
-            */
-
             const whatsappLinks = document.querySelectorAll('.whatsapp-link');
             whatsappLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -571,6 +559,4 @@
     </script>
 </body>
 </html>
-
-
 
