@@ -61,6 +61,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -99,37 +101,6 @@
             transform: translateY(0);
         }
         
-        @keyframes pulse-aurora {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-            50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
-        }
-
-        .aurora-outer {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 1;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .aurora-inner {
-            position: absolute;
-            top: 0; left: 50%;
-            width: 200%; max-width: 1200px;
-            padding-top: 100%;
-            background-image: radial-gradient(ellipse, rgba(255, 67, 0, 0.25) 0%, rgba(255, 67, 0, 0) 70%);
-            animation: pulse-aurora 12s ease-in-out infinite;
-        }
-
-        .aurora-inner-bottom {
-            position: absolute;
-            bottom: 0; left: 50%;
-            transform: translate(-50%, 50%);
-            width: 200%; max-width: 1200px;
-            padding-top: 100%;
-            background-image: radial-gradient(ellipse, rgba(255, 67, 0, 0.25) 0%, rgba(255, 67, 0, 0) 70%);
-        }
-
         @keyframes infinite-scroll {
             from { transform: translateX(0); }
             to { transform: translateX(-100%); }
@@ -139,11 +110,45 @@
             animation: infinite-scroll 40s linear infinite;
         }
 
+        /* Swiper Coverflow Carousel Styles */
+        .swiper-container {
+            width: 100%;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px;
+            height: 300px;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #ff4300 !important;
+            transform: scale(0.8);
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #ff4300 !important;
+        }
+
         @media (max-width: 767px) {
-            .aurora-inner, .aurora-inner-bottom {
-                width: 300%;
-                background-image: radial-gradient(ellipse, rgba(255, 67, 0, 0.35) 0%, rgba(255, 67, 0, 0) 60%);
-            }
+           .swiper-slide {
+                width: 240px;
+                height: 240px;
+           }
         }
     </style>
 </head>
@@ -204,16 +209,30 @@
                         </a>
                     </div>
                 </div>
-                <div id="hero-carousel" class="relative w-full min-h-[300px] md:min-h-[450px] rounded-lg shadow-2xl overflow-hidden" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
-                    <picture class="carousel-image absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out opacity-100">
-                        <img src="https://iili.io/KGP8b6b.jpg" alt="Entregador da Check Boys uniformizado com mochila de delivery vermelha em uma moto" class="w-full h-full object-cover" width="1200" height="800">
-                    </picture>
-                    <picture class="carousel-image absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out opacity-0">
-                        <img src="https://iili.io/KGP8DMu.jpg" alt="Close-up de um entregador da Check Boys ajustando sua mochila de delivery" class="w-full h-full object-cover" loading="lazy" width="1200" height="800">
-                    </picture>
-                    <picture class="carousel-image absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out opacity-0">
-                        <img src="https://iili.io/KGP8Qt9.jpg" alt="Entregador sorridente da Check Boys pronto para o trabalho" class="w-full h-full object-cover" loading="lazy" width="1200" height="800">
-                    </picture>
+                <!-- Swiper 3D Coverflow Carousel -->
+                <div class="swiper-container my-swiper" data-aos="fade-left" data-aos-duration="800" data-aos-delay="300">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="https://iili.io/KGP8b6b.jpg" alt="Entregador da Check Boys uniformizado com mochila de delivery vermelha em uma moto" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://iili.io/KGP8DMu.jpg" alt="Close-up de um entregador da Check Boys ajustando sua mochila de delivery" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://iili.io/KGP8Qt9.jpg" alt="Entregador sorridente da Check Boys pronto para o trabalho" />
+                        </div>
+                        <div class="swiper-slide">
+                             <img src="https://iili.io/KGP8suS.jpg" alt="Foto de costas de um entregador da Check Boys com a mochila da marca" />
+                        </div>
+                        <div class="swiper-slide">
+                             <img src="https://iili.io/KGP8tne.jpg" alt="Entregador da Check Boys em uma moto vermelha" />
+                        </div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Navigation -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </section>
@@ -427,9 +446,37 @@
     </a>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             AOS.init({ duration: 700, once: true, offset: 50 });
+
+            // Swiper Carousel Initialization
+            var swiper = new Swiper('.my-swiper', {
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                coverflowEffect: {
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                },
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
 
             const phoneNumber = '5532999083228';
             const whatsappMessage = encodeURIComponent('Olá! Vim pela landing page e gostaria de saber mais sobre os planos e serviços da Check Boys.');
@@ -496,6 +543,8 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
 
+            // This is the old carousel logic, we can remove it or comment it out
+            /*
             const carouselImages = document.querySelectorAll('#hero-carousel .carousel-image');
             let currentImageIndex = 0;
             if (carouselImages.length > 0) {
@@ -507,6 +556,7 @@
                     carouselImages[currentImageIndex].classList.add('opacity-100');
                 }, 4000);
             }
+            */
 
             const whatsappLinks = document.querySelectorAll('.whatsapp-link');
             whatsappLinks.forEach(link => {
@@ -521,3 +571,4 @@
     </script>
 </body>
 </html>
+
